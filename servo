@@ -1,0 +1,41 @@
+#include <Servo.h>      //khai bao thư viện điều khiển sevro
+Servo mysevro1;          //khai báo đối tượng myservo dung de dieu khien servo
+Servo mysevro2;
+Servo mysevro3;
+Servo mysevro4;
+int bt1 = A0;      //Khai báo chân đọc biến trở
+int bt2 = A1;
+int bt3 = A2;
+int bt4 = A3;
+int servo1 = 11;        //khai báo chân điều khiển servo
+int servo2 = 10;
+int servo3 = 9;
+int servo4 = 6;
+
+void setup()
+{
+  mysevro1.attach(servo1);   //cài đặt chức năng điều khiển servo cho các chân 
+  mysevro2.attach(servo2);
+  mysevro3.attach(servo3);
+  mysevro4.attach(servo4);
+
+}
+void loop()
+{
+  int a1 = analogRead(bt1); //Đọc giá trị các biến trỏ
+  int a2 = analogRead(bt2);
+  int a3 = analogRead(bt3);
+  int a4 = analogRead(bt4);
+
+  int servo1 = map(a1,0,1023,0,180);  //chuyển đổi giá trị analog từ 0-1023  sang góc 0-180
+  int servo2 = map(a2,0,1023,0,180);
+  int servo3 = map(a3,0,1023,0,180);
+  int servo4 = map(a4,0,1023,0,180);
+
+  mysevro1.write(servo1);   //cho servo quay voi 1 goc bat ky
+  mysevro2.write(servo2);
+  mysevro3.write(servo3);
+  mysevro4.write(servo4);
+  delay(15);
+
+}
